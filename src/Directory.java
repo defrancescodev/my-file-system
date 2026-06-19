@@ -16,25 +16,29 @@ public class Directory extends FileSystemComponent {
     public void addChild(FileSystemComponent fileSystemComponent) {
         if (fileSystemComponent == null) return;
         children.add(fileSystemComponent);
+        fileSystemComponent.setParent(this);
 
     }
 
     public void removeChild(FileSystemComponent fileSystemComponent) {
         if (fileSystemComponent == null) return;
         children.remove(fileSystemComponent);
+        fileSystemComponent.setParent(null);
 
     }
 
-    public void printChildren() {
-        for (int i = 0; i < children.size(); i++) {
-            System.out.println(children.get(i));
-        }
 
-    }
+
+
 
     @Override
     public long getSize() {
-        return 0;
+        long sum = 0;
+        for (FileSystemComponent node : children) {
+            sum += node.getSize();
+        }
+
+        return sum;
     }
 
     @Override
