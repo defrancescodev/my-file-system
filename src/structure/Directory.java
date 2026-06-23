@@ -1,3 +1,5 @@
+package structure;
+
 import java.util.List;
 
 public class Directory extends FileSystemComponent {
@@ -26,10 +28,6 @@ public class Directory extends FileSystemComponent {
         fileSystemComponent.setParent(null);
 
     }
-
-
-
-
 
     @Override
     public long getSize() {

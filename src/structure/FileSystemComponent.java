@@ -1,3 +1,5 @@
+package structure;
+
 public abstract class FileSystemComponent {
     private String name;
     private Directory parent;
