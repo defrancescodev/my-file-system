@@ -43,4 +43,12 @@ public class Directory extends FileSystemComponent {
     public boolean isDirectory() {
         return true;
     }
+
+    public List<FileSystemComponent> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<FileSystemComponent> children) {
+        this.children = children;
+    }
 }

@@ -2,6 +2,7 @@ package operations;
 
 import interfaces.FileSystemCommand;
 import structure.Directory;
+import structure.FileSystemComponent;
 import structure.FileSystemSimulator;
 
 public class Remove implements FileSystemCommand {
@@ -14,7 +15,18 @@ public class Remove implements FileSystemCommand {
     @Override
     public void execute(FileSystemSimulator simulator) {
         Directory currentDirectory = simulator.getCurrentDirectory();
-        currentDirectory.removeChild(currentDirectory);
+        FileSystemComponent elementToRemove = null;
+
+        for (FileSystemComponent child : currentDirectory.getChildren()) {
+            if (child.getName().equals(this.targetName)) {
+                elementToRemove = child;
+                break;
+            }
+        }
+
+        if (elementToRemove != null) {
+            currentDirectory.removeChild(elementToRemove);
+        }
 
     }
 
